@@ -1,0 +1,4 @@
+node_moules
+bin/
+obj/
+.env
