@@ -6,8 +6,8 @@ interface CloudTask {
     isCompleted: boolean;
 }
 const Dashboard = () => {
-    const [items, setItems] = useState<CloudTask[]>([]);
-    const [error, setError] = useState("");
+    const[items, setItems] = useState<CloudTask[]>([]);
+    const[error, setError] = useState("");
     useEffect(() => {
         api.get('/tasks')
             .then((res: any) => {
@@ -15,28 +15,20 @@ const Dashboard = () => {
             })
             .catch((err: any) => {
                 console.error("Szczegóły błędu:", err);
-                setError("Błąd połączenia z API. Sprawdź, czy kontener cloud-backend działa na porcie 8081.");
+                setError("Błąd połączenia z API. Sprawdź, czy kontenercloud-backend działa na porcie8081.");
             });
     }, []);
     return (
-        <div style={{padding: '20px', textAlign: 'center', fontFamily: 'Arial, sans-serif'}}>
+        <div style={{ padding: '20px', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
             <h1>☁️ Cloud App Dashboard</h1>
             {error && (
-                <div style={{
-                    background: '#fff3cd',
-                    color: '#856404',
-                    padding: '10px',
-                    borderRadius: '5px',
-                    margin: '20px auto',
-                    maxWidth: '400px'
-                }}>
+                <div style={{ background: '#fff3cd', color: '#856404', padding: '10px', borderRadius: '5px', margin: '20px auto', maxWidth: '400px' }}>
                     {error}
                 </div>
             )}
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                {items.length === 0 && !error &&
-                    <p>Brak zadań w bazie. Dodaj coś przez Swaggera ({import.meta.env.VITE_API_URL})!</p>}
-                <ul style={{listStyle: 'none', padding: 0}}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                {items.length === 0 && !error && <p>Brak zadań w bazie. Dodaj coś przez Swaggera ({import.meta.env.VITE_API_URL})!</p>}
+                <ul style={{ listStyle: 'none', padding: 0 }}>
                     {items.map((item) => (
                         <li key={item.id} style={{
                             background: '#f8f9fa',
@@ -54,6 +46,6 @@ const Dashboard = () => {
             </div>
         </div>
     );
-};
+}
 
 export default Dashboard;
