@@ -1,0 +1,7 @@
+{
+  "name": "cloud-task-front",
+  "scripts": {
+    "start": "npx serve -s ."
+  }
+}
+ 
