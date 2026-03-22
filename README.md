@@ -16,5 +16,6 @@ Ten projekt został zaplanowany z myślą o usługach PaaS (Platform as a Servic
 * [x] **Artefakt 2:** Środowisko wielokontenerowe uruchomione lokalnie.
 * [x] **Artefakt 3:** Działająca warstwa prezentacji.
 * [x] **Artefakt 4:** Działająca warstwa logiki backendu.
+* [x] **Artefakt 5:** System gotowy na chmurę.
 
 > **Informacja:** Ten plik będzie ewoluował. W kolejnych etapach dodamy tutaj sekcje 'Quick Start', opis zmiennych środowiskowych oraz instrukcję wdrożenia (CI/CD).
