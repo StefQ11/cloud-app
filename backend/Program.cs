@@ -9,8 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // 3. Pobranie Connection Stringa (zmiennej środowiskowej z Dockera)
-var connectionString= Environment.GetEnvironmentVariable("DB_CONNECTION_STRING")
-?? builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 // 4. Rejestracja bazy danych MS SQL Server
 // Rejestracja bazy danych z mechanizmem ponawiania prób (Retry Logic)
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -36,9 +35,10 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<AppDbContext>();
-        // 1. Tworzy bazę i tabele, jeśli ich nie ma
-        // context.Database.EnsureCreated();
-        // 2. Dodaje startowe dane, jeśli tabela jest pusta (opcjonalne, ale fajne)
+
+        // 🔥 TO JEST KLUCZOWE
+        context.Database.Migrate();
+
         if (!context.Tasks.Any())
         {
             context.Tasks.AddRange(
